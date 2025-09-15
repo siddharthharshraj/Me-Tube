@@ -1,4 +1,4 @@
-# MeTube - Advanced YouTube Clone
+# MeTube - Video Streaming Platform with Live Chat Feature 
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
 [![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-1.9.5-purple.svg)](https://redux-toolkit.js.org/)
