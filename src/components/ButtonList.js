@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCategory, setLoading, setVideos, clearSearchResults } from "../utils/videoSlice";
@@ -9,15 +9,15 @@ const ButtonList = () => {
   const { selectedCategory } = useSelector((store) => store.videos);
   const [list, setList] = useState([]);
 
-  const getVideos = async () => {
+  const getVideos = useCallback(async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const json = await data.json();
     setList(json.items);
-  };
+  }, []);
 
   useEffect(() => {
     getVideos();
-  }, []);
+  }, [getVideos]);
 
   const categories = [
     { name: "All", id: null },

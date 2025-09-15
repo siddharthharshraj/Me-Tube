@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ const VideoContainer = () => {
   // Use search results if available, otherwise use regular videos
   const displayVideos = searchResults.length > 0 ? searchResults : videos;
 
-  const getVideos = async () => {
+  const getVideos = useCallback(async () => {
     dispatch(setLoading(true));
     try {
       const data = await fetch(YOUTUBE_VIDEOS_API);
@@ -26,13 +26,13 @@ const VideoContainer = () => {
     } finally {
       dispatch(setLoading(false));
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     if (videos.length === 0) {
       getVideos();
     }
-  }, [videos.length]);
+  }, [videos.length, getVideos]);
 
   const renderVideos = () => {
     if (loading) {

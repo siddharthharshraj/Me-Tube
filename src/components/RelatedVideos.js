@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import LoadingSpinner from "./LoadingSpinner";
@@ -9,7 +9,7 @@ const RelatedVideos = ({ currentVideoId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchRelatedVideos = async () => {
+  const fetchRelatedVideos = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -23,17 +23,17 @@ const RelatedVideos = ({ currentVideoId }) => {
           .slice(0, 10);
         setRelatedVideos(filtered);
       }
-    } catch (err) {
+    } catch (error) {
+      console.error("Error fetching related videos:", error);
       setError("Failed to load related videos");
-      console.error("Error fetching related videos:", err);
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentVideoId]);
 
   useEffect(() => {
     fetchRelatedVideos();
-  }, [currentVideoId]);
+  }, [fetchRelatedVideos]);
 
   const formatViewCount = (count) => {
     if (!count) return "0 views";
