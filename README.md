@@ -8,9 +8,8 @@ A high-performance YouTube clone built with React 18, Redux Toolkit, and Tailwin
 
 ## 🚀 Live Demo
 
-**[Live Demo Link - Coming Soon]**
+**[[Live Demo Link]](https://metube.siddharth-dev.tech/)**
 
-> *The live demo will be deployed on Netlify with full functionality including metrics dashboard and performance monitoring.*
 
 ## 🛠️ Technologies Used
 
