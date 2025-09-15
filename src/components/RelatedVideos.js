@@ -9,10 +9,6 @@ const RelatedVideos = ({ currentVideoId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchRelatedVideos();
-  }, [currentVideoId]);
-
   const fetchRelatedVideos = async () => {
     try {
       setLoading(true);
@@ -34,6 +30,10 @@ const RelatedVideos = ({ currentVideoId }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchRelatedVideos();
+  }, [currentVideoId]);
 
   const formatViewCount = (count) => {
     if (!count) return "0 views";

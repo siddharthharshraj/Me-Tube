@@ -32,7 +32,7 @@ const Head = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [searchQuery]);
+  }, [searchQuery, searchCache]);
 
   const getSearchSuggestions = async () => {
     try {

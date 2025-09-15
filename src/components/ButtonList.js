@@ -9,15 +9,15 @@ const ButtonList = () => {
   const { selectedCategory } = useSelector((store) => store.videos);
   const [list, setList] = useState([]);
 
-  useEffect(() => {
-    getVideos();
-  }, []);
-
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const json = await data.json();
     setList(json.items);
   };
+
+  useEffect(() => {
+    getVideos();
+  }, []);
 
   const categories = [
     { name: "All", id: null },

@@ -11,7 +11,6 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import Footer from "./components/Footer";
 
 // Lazy load components for code splitting
-const MainContainer = lazy(() => import("./components/MainContainer"));
 const WatchPage = lazy(() => import("./components/WatchPage"));
 const MetricsPage = lazy(() => import("./components/MetricsPage"));
 
