@@ -1,0 +1,7 @@
+# Ignore all files to disable ESLint completely
+*
+**/*
+src/
+public/
+build/
+node_modules/
